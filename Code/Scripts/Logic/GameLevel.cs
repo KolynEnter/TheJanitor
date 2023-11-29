@@ -1,6 +1,8 @@
 using UnityEngine;
 
+
 /*
+    SO File naming:
     NC = "Normal classic"
     HC = "Hard classic"
 
@@ -9,8 +11,13 @@ using UnityEngine;
 
     NI = "Normal invasion"
     HI = "Hard invasion"
+    
+    All game level SO should be stored
+    to the gameSetter in a game scene.
+    
+    GameLevel is configurable, meaning
+    a SO can represent a whole game level
 */
-
 namespace CS576.Janitor.Process
 {
     [CreateAssetMenu(menuName = "ScriptableObjects/Variables/GameLevel", order = 4)]
