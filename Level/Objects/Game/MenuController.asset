@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddcde119684330142a4b983c19a98390, type: 3}
+  m_Name: MenuController
+  m_EditorClassIdentifier: 
+  _showHomePanel: {fileID: 11400000, guid: 1cec114469c6d55469a53d848ebbeb33, type: 2}
+  _showSoundPanel: {fileID: 11400000, guid: a1e4525a231e65f4b951036b3289460e, type: 2}
+  _showGuidePanel: {fileID: 11400000, guid: c3af53ef825fe4a4dbda7bb3c659278f, type: 2}
+  _showHelpPanel: {fileID: 11400000, guid: a394c28bb8014de43972f1ff0719cdd0, type: 2}
+  _hideAllPanels: {fileID: 11400000, guid: 4b3bb3da33580af48b855e622c7a4a04, type: 2}

@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d6d10b7efc3b2d4d8e243429e0c7b08, type: 3}
+  m_Name: GameClock
+  m_EditorClassIdentifier: 
+  _gameTime: {fileID: 11400000, guid: ba01015715cbe754685da2ee85a49dfa, type: 2}

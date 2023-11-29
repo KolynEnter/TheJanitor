@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7afb5a4e4a8b594190603e074739377, type: 3}
+  m_Name: CanOnly
+  m_EditorClassIdentifier: 
+  _mode: 0
+  _difficulty: 0
+  _limitMinutes: 1
+  _goal: 100
+  _spaceshipHP: 0
+  _spaceshipSpeed: 0
+  _cityHP: 0
+  _jammerProduceDemand: 0
+  _minTrashNumber: 10
+  _maxTrashNumber: 100
+  _trashGenerateInterval: 15
+  _trashGenerateNumber: 20
+  _modifiedTrashGenerateRate:
+  - trash: {fileID: 11400000, guid: 19eda8eff3b44a743840923430f1bfe3, type: 2}
+    generateRate: 0
+  - trash: {fileID: 11400000, guid: 1debdaec4888d754384516f3c3858265, type: 2}
+    generateRate: 0
+  - trash: {fileID: 11400000, guid: 6632aceb6dabc9845a7b9edce7dbf253, type: 2}
+    generateRate: 20
+  _modifiedTrashScore:
+  - trash: {fileID: 11400000, guid: 19eda8eff3b44a743840923430f1bfe3, type: 2}
+    score: 0
+  - trash: {fileID: 11400000, guid: 1debdaec4888d754384516f3c3858265, type: 2}
+    score: 0
+  - trash: {fileID: 11400000, guid: 6632aceb6dabc9845a7b9edce7dbf253, type: 2}
+    score: 10
+  _modifiedTrashBarFillValue:
+  - trash: {fileID: 11400000, guid: 19eda8eff3b44a743840923430f1bfe3, type: 2}
+    fillValue: 0
+  - trash: {fileID: 11400000, guid: 1debdaec4888d754384516f3c3858265, type: 2}
+    fillValue: 0
+  - trash: {fileID: 11400000, guid: 6632aceb6dabc9845a7b9edce7dbf253, type: 2}
+    fillValue: 100
+  _trashCanChance:
+  - trashType: 0
+    chance: 20
+  - trashType: 1
+    chance: 40
+  - trashType: 2
+    chance: 20
+  - trashType: 3
+    chance: 20
