@@ -133,7 +133,7 @@ namespace CS576.Janitor.Process
             Debug.Log("Limit minutes: " + _currentGameLevel.GetDifficulty);
         }
 
-        public void Initialize()
+        private void Initialize()
         {
             Debug.Log("Game setter initialized.");
             ChangeMode(_config.gameMode);
