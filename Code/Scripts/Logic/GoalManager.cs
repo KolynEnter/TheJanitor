@@ -1,7 +1,12 @@
 using TMPro;
 using UnityEngine;
 
-
+/*
+    Manage all sorts of goals in the game
+    As well as the goal text UI
+    The UI is only initialized before game
+    and remains static after that
+*/
 namespace CS576.Janitor.Process
 {
     public class GoalManager : MonoBehaviour, IRequireGameSetterInitialize
