@@ -87,6 +87,12 @@ namespace CS576.Janitor.Process
             return FindObjectsOfType<MonoBehaviour>(true).OfType<T>().ToArray();
         }
 
+        /*
+            Change the mode for the current game
+            Notice that it changes the _gameMode variable
+            and shows the UI required for the current
+            game, and hides unneeded UI components
+        */
         private void ChangeMode(GameMode mode)
         {
             _gameMode = mode;
@@ -110,6 +116,10 @@ namespace CS576.Janitor.Process
             }
         }
 
+        /*
+            Pick a random level based on the given requirements (mode & difficulty)
+            from the cached game levels
+        */
         private void PickRandomAccordingLevel(GameMode mode, GameDifficulty difficulty)
         {
             GameLevel[] levels = mode == GameMode.Classic ? _allClassicLevels :
