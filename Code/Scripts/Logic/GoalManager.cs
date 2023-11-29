@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 
+
 /*
     Manage all sorts of goals in the game
     As well as the goal text UI
