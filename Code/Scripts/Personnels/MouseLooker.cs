@@ -1,5 +1,12 @@
 using UnityEngine;
 
+
+/*
+    Use mouse to move the camera viewpoint
+    Press 'Esc' key to exit focus
+    Clicking on screen will enter focus
+    (same as assignment 5)
+*/
 namespace CS576.Janitor.Character
 {
     public class MouseLooker : MonoBehaviour
@@ -24,6 +31,12 @@ namespace CS576.Janitor.Character
             Cursor.lockState = CursorLockMode.Locked;
         }
 
+        /*
+            Used to control the camera with mouse movement
+            Code I discovered in my early learning stage
+            This is the video:
+            https://m.youtube.com/watch?v=b1uoLBp2I1w
+        */
         private void Update()
         {
             if (_isDisabled)

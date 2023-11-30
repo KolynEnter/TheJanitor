@@ -1,5 +1,14 @@
 using UnityEngine;
 
+
+/*
+    The player
+    handles movement keys
+    checks if player is stucked in the same position
+    while moving (i.e. walk onto a wall but stays in
+    the same position. In this case, the walking sound
+    should not be played.
+*/
 namespace CS576.Janitor.Character
 {
     public class JanitorPlayer : MonoBehaviour
@@ -12,14 +21,17 @@ namespace CS576.Janitor.Character
         [SerializeField] private float _gravity = -9.81f;
         [SerializeField] private Prop.TrashBag _trashBag;
 
+        /* Check if play is stuck */
         private Process.Timer _runningTimer = new Process.Timer(1.0f);
         private Vector3 _lastPosition;
         private float _timeSinceLastMove = 0f;
         private float _idleTimeThreshold = 0.5f;
         private bool _isPlayerStuck = false;
+        /* Check if player is stuck */
 
         private Vector3 _moveDirection = Vector3.zero;
 
+        // the speed is influenced by the carrying weight
         private float GetCurrentSpeed
         {
             get

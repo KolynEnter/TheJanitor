@@ -7,6 +7,9 @@ using CS576.Janitor.Tools;
     Controls the player input from mouse
     
     Excute code from other places when the player clicked on something
+    i.e. If the player click on a trash,
+    it will determine the current holding tool and
+    then execute actions based on that
 */
 namespace CS576.Janitor.Character
 {
@@ -18,6 +21,7 @@ namespace CS576.Janitor.Character
         [SerializeField]
         private HoldingTool _holdingTool;
 
+        // Current cursor pointing to the trash slot
         [SerializeField]
         private Process.IntVariable _currentTrashSlotIndex;
 
@@ -36,15 +40,18 @@ namespace CS576.Janitor.Character
         {
             Time.fixedDeltaTime = 0.5f;
         }
-
+        
+        // Decide if need to rise popper gun
         private void FixedUpdate()
         {
             if (_popper.gameObject.activeSelf)
             {
+                // if left mouse pressed
                 if (Input.GetMouseButton(0))
                 {
                     Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
                     RaycastHit hit;
+                    // don't rise popper if clicked on a trashcan
                     if (Physics.Raycast(ray, out hit))
                     {
                         if (hit.transform.gameObject.CompareTag("TrashCan"))
@@ -60,7 +67,8 @@ namespace CS576.Janitor.Character
                 }
             }
         }
-
+        
+        // Check for mouse inputs
         private void Update()
         {
             if (!Input.GetMouseButton(0) && !Input.GetMouseButtonUp(0))
@@ -79,6 +87,7 @@ namespace CS576.Janitor.Character
                         ShootGrabRay(hit);
                     }
                 }
+                // Trigger continuous trash dumping
                 if (_lpDeterminer.IsLongPressDumpOK())
                 {
                     ShootTrashCanRay(hit);
