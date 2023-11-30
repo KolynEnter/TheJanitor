@@ -1,5 +1,9 @@
 using UnityEngine;
 
+
+/*
+    Listens to a StringEvent
+*/
 namespace CS576.Janitor.Process
 {
     public class StringEventListener : MonoBehaviour

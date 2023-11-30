@@ -1,6 +1,14 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+
+/*
+    A SO event receiving two parameters:
+        1. the trash
+        2. the type of trashcan
+    
+    This event is triggered when a trash is dumped into a trashcan
+*/
 namespace CS576.Janitor.Trashes
 {
     [CreateAssetMenu(menuName = "ScriptableObjects/Events/TrashDumpEvent", order = 1)]

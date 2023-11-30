@@ -46,7 +46,7 @@ namespace CS576.Janitor.Trashes
             _capUIManager.UpdateUI(_trashBag.GetCurrentWeight, _trashBag.GetTotalCapacity);
 
             // telling the player a new trash is added to the bag
-            _chatEvent.TriggerEvent(go.ToString());
+            _chatEvent.TriggerEvent(trash.GetName);
         }
     }
 }

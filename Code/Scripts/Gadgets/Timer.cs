@@ -1,5 +1,10 @@
 using UnityEngine;
 
+
+/*
+    A little timer I write for almost every project of mine
+    It counts down the time in the deltaTime scale
+*/
 namespace CS576.Janitor.Process
 {
     public struct Timer

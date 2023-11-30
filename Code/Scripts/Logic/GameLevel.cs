@@ -17,6 +17,8 @@ using UnityEngine;
     
     GameLevel is configurable, meaning
     a SO can represent a whole game level
+
+    You can make your own levels if you like
 */
 namespace CS576.Janitor.Process
 {
@@ -24,6 +26,7 @@ namespace CS576.Janitor.Process
     public class GameLevel : ScriptableObject
     {
         [Header("Level")]
+        
         [SerializeField]
         private GameMode _mode;
         public GameMode GetMode
@@ -47,6 +50,7 @@ namespace CS576.Janitor.Process
         }
 
         [Header("Classic")]
+
         [Tooltip("Only relevant in classic mode")]
         [Range(100, 1000)]
         [SerializeField]
@@ -57,6 +61,7 @@ namespace CS576.Janitor.Process
         }
 
         [Header("Invasion")]
+
         [Tooltip("Only relevant in invasion mode")]
         [Range(1000, 30000)]
         [SerializeField]
@@ -112,6 +117,7 @@ namespace CS576.Janitor.Process
 
         [Header("Trash")]
         [SerializeField]
+        [Range(10, 20)]
         [Tooltip("The lowest number of trash can exist at a give time.")]
         private int _minTrashNumber;
         public int GetMinTrashNumber
@@ -120,6 +126,7 @@ namespace CS576.Janitor.Process
         }
 
         [SerializeField]
+        [Range(10, 200)]
         [Tooltip("The highest number of trash can exist at a give time.")]
         private int _maxTrashNumber;
         public int GetMaxTrashNumber
@@ -128,6 +135,7 @@ namespace CS576.Janitor.Process
         }
 
         [SerializeField]
+        [Range(1, 30)]
         [Tooltip("The interval of each call to trash generation, measured in seconds.")]
         private float _trashGenerateInterval;
         public float GetTrashGenerateInterval
@@ -136,6 +144,7 @@ namespace CS576.Janitor.Process
         }
 
         [SerializeField]
+        [Range(1, 20)]
         [Tooltip("The number of trash generated for each call to trash generation.")]
         private int _trashGenerateNumber;
         public int GetTrashGenerateNumber

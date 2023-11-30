@@ -1,6 +1,10 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+
+/*
+    A SO event triggered with an integer value
+*/
 namespace CS576.Janitor.Process
 {
     [CreateAssetMenu(menuName = "ScriptableObjects/Events/IntEvent", order = 4)]

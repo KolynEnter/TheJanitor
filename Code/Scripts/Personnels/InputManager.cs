@@ -2,6 +2,12 @@ using UnityEngine;
 using CS576.Janitor.Trashes;
 using CS576.Janitor.Tools;
 
+
+/*
+    Controls the player input from mouse
+    
+    Excute code from other places when the player clicked on something
+*/
 namespace CS576.Janitor.Character
 {
     public class InputManager : MonoBehaviour

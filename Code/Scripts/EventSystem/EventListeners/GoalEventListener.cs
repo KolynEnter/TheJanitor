@@ -65,6 +65,10 @@ namespace CS576.Janitor.Process
             }
         }
 
+        /*
+            Progress the goal fill bar, or de-progress it
+            if val is negative
+        */
         private void ClassicModeModification(int val)
         {
             if (_goalBarFillImage.fillAmount < 1.0f)
@@ -79,6 +83,10 @@ namespace CS576.Janitor.Process
             }
         }
 
+        /*
+            Increase the score, or decrease the score
+            if val is negative
+        */
         private void ScoreModeModification(int val)
         {
             _goalManager.currentScore += val;

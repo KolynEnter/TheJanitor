@@ -1,6 +1,10 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+
+/*
+    A SO event triggered without a parameter
+*/
 namespace CS576.Janitor.Process
 {
     [CreateAssetMenu(menuName = "ScriptableObjects/Events/GameEvent", order = 2)]

@@ -1,5 +1,10 @@
 using UnityEngine;
 
+
+/*
+    GameObjectEventListener (GOEventListener)
+    Listens to a GameObjectEvent (GOEvent)
+*/
 namespace CS576.Janitor.Process
 {
     public class GOEventListener : MonoBehaviour

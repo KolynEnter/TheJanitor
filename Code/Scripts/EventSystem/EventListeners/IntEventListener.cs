@@ -1,5 +1,10 @@
 using UnityEngine;
 
+
+/*
+    integer event listener (IntEventListener)
+    Listens to an integer event (IntEvent)
+*/
 namespace CS576.Janitor.Process
 {
     public class IntEventListener : MonoBehaviour

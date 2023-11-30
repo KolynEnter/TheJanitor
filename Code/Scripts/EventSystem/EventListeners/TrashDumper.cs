@@ -2,6 +2,20 @@ using UnityEngine;
 using CS576.Janitor.Prop;
 using CS576.Janitor.Process;
 
+
+/*
+    Controls the basic things that should happen after a trash is dumped.
+    This applies to all game modes.
+
+    Things that should change include:
+        1. UI, if the trash already exist in the bag. Increment its quantity label
+                if not already exist, Added it to an available slot
+                if there is no slot, don't do anything
+        2. Data, actually increment the trash number in the data structure trashBag
+        3. Capacity, change both data and UI label
+
+    The trash dump sound SFX should also play
+*/
 namespace CS576.Janitor.Trashes
 {
     public class TrashDumper : TrashDumpEventListener, IRequireGameSetterInitialize

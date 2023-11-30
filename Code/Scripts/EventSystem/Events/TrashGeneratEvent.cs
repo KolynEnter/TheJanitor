@@ -3,6 +3,15 @@ using System.Collections.Generic;
 using CS576.Janitor.Process;
 
 
+/*
+    A SO Event used to notify all gameObject with TrashGenerateListener component 
+    (or all gameObjects that can generate trash near itself). When this event is
+    triggered, notify the listeners to generate trash. 
+
+    This event also passes the trash generation rate to the listeners.
+    When a listener successfully generate a trash, this event will count them and
+    use it to control the number of trash generated per trigger.
+*/
 namespace CS576.Janitor.Trashes
 {
     [CreateAssetMenu(menuName = "ScriptableObjects/Events/TrashGenerateEvent", order = 5)]
@@ -23,7 +32,7 @@ namespace CS576.Janitor.Trashes
 
                 if (counter >= generateNumber)
                     return;
-                if (result)
+                if (result) // successfully generated trash for this listener
                     counter++;
 
             }

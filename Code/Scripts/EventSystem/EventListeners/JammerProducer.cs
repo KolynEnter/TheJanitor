@@ -4,6 +4,14 @@ using CS576.Janitor.Process;
 using CS576.Janitor.Trashes;
 
 
+/*
+    Listens to a trash dump event
+    This class should only work in the invasion mode
+
+    After the player has correctly dumped trash, progress the 
+    jammer demand fill bar.
+    And also add the trash' filling value to the currentFillValue
+*/
 namespace CS576.Janitor.Tools
 {
     public class JammerProducer : TrashDumpEventListener, IRequireGameSetterInitialize

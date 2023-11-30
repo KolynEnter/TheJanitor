@@ -1,6 +1,9 @@
 using UnityEngine;
 
 
+/*
+    Listens to a TrashDumpEvent
+*/
 namespace CS576.Janitor.Trashes
 {
     public class TrashDumpEventListener : MonoBehaviour

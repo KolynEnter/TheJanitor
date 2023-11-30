@@ -4,10 +4,21 @@ using System;
 using TMPro;
 
 
+/*
+    This class exists in the "game configuration page", you can go to
+    this page by: Open the game -> Click 'Start game' button.
+
+    This class controls the entire page.
+*/
 namespace CS576.Janitor.Process
 {
     public class GameConfiger : MonoBehaviour
     {
+        /*
+            a SO passed into the game scene as well
+            Variables in SO is perserved across scene
+            which is perfect for game configuration
+        */
         [SerializeField]
         private GameConfiguration _config;
 
@@ -33,9 +44,15 @@ namespace CS576.Janitor.Process
 
         private void Awake()
         {
+            /*
+                Use Enum.GetNames so that when I add a new item to enum, I do not need 
+                to rememeber to add it to here
+            */
             _modeArray = Enum.GetNames(typeof(GameMode));
             _difficultyArray = Enum.GetNames(typeof(GameDifficulty));
             string[] allToolStrings = Enum.GetNames(typeof(ToolType));
+
+            // every tool except hand and jammer because they cannot be selected
             _toolArray = new string[allToolStrings.Length-2];
             int counter = 0;
             for (int i = 0; i < allToolStrings.Length; i++)
@@ -48,6 +65,9 @@ namespace CS576.Janitor.Process
             }
         }
 
+        /*
+            Initialize everything in the game configuration page
+        */
         private void Start() 
         {
             _tool2Button = _tool2ButtonObject.GetComponent<Button>();
@@ -65,6 +85,14 @@ namespace CS576.Janitor.Process
                 _tool2ButtonObject.SetActive(false);
         }
 
+        /*
+            Called when the 'mode' button is pressed
+            By default, it should be 'classic' mode.
+            Click on it should change to 'score' mode, then again it changes
+            to 'invasion' mode. Click again goes back to 'classic' mode.
+
+            This applies to the proposal version
+        */
         public void PressModeButton()
         {
             int nextIndex = PressButton(_modeButton, _modeArray);
@@ -74,6 +102,14 @@ namespace CS576.Janitor.Process
             }
         }
 
+        /*
+            Called when the difficulty button is pressed
+            By default, it should be 'normal' difficulty.
+            Click on it should change to 'hard' difficulty, then again it
+            changes back to 'normal' difficulty.
+
+            This applies to the proposal version
+        */
         public void PressDifficultyButton()
         {
             int nextIndex = PressButton(_difficultyButton, _difficultyArray);
@@ -83,6 +119,12 @@ namespace CS576.Janitor.Process
             }
         }
 
+        /*
+            Similar to the two buttons above.
+            This one is for tools. Clicking on it will rotate the tools.
+
+            However, Tool1 button cannot have the same tool as Tool2 button.
+        */
         public void PressTool1Button()
         {
             int nextIndex = PressButton(_tool1Button, _toolArray);
@@ -102,6 +144,11 @@ namespace CS576.Janitor.Process
             
         }
 
+        /*
+            Exactly the same as Tool1 button. 
+
+            Still, Tool1 button cannot have the same tool as Tool2 button.
+        */
         public void PressTool2Button()
         {
             int nextIndex = PressButton(_tool2Button, _toolArray);
@@ -121,7 +168,15 @@ namespace CS576.Janitor.Process
             
         }
 
-        // returns the circular next index found
+        /*
+            Changes the text of the tool button label to the circular next tool
+
+            returns the circular next index found
+            If the array has a length of 5. YOu are in index 0,
+                the next index should be 1
+            If the array has a length of 5. You are in index 4,
+                the next index should be 0.
+        */
         private int PressButton(Button button, string[] enumArray)
         {
 #nullable enable
@@ -136,6 +191,13 @@ namespace CS576.Janitor.Process
             return nextIndex;
         }
 
+        /*
+            returns the circular next index found
+            If the array has a length of 5. YOu are in index 0,
+                the next index should be 1
+            If the array has a length of 5. You are in index 4,
+                the next index should be 0.
+        */
         private int FindCircularNextIndexOf<T>(T element, T[] array) where T : IComparable<T>
         {
             int currIndex = FindIndexOf(element, array);
@@ -164,6 +226,7 @@ namespace CS576.Janitor.Process
             return -1;
         }
 
+        // Get the text string in a button
 #nullable enable
         private string? GetButtonText(Button button)
         {
@@ -176,6 +239,7 @@ namespace CS576.Janitor.Process
         }
 #nullable disable
 
+        // Change the text in a button
         private void ChangeButtonText(Button button, string newText)
         {
             Transform textTransform = button.transform.GetChild(0);

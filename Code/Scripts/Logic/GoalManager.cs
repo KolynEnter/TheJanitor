@@ -31,6 +31,10 @@ namespace CS576.Janitor.Process
         [SerializeField]
         private TextMeshProUGUI _goalText;
 
+        /*
+            Set the goal text (the UI component located on the left upper corner)
+            it is an orange rectangle with white text.
+        */
         public void SetGoalTextForClassic()
         {
             _goalText.text = "GOAL: CLEAR OUT TRASHES BEFORE TIME RUNS OUT.";

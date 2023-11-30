@@ -1,6 +1,10 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+
+/*
+    A SO event triggered with a string value
+*/
 namespace CS576.Janitor.Process
 {
     [CreateAssetMenu(menuName = "ScriptableObjects/Events/StringEvent", order = 3)]
