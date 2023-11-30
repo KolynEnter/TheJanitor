@@ -1,6 +1,10 @@
 using UnityEngine;
 
 
+/*
+    The animation of the green compass arrow
+    Moves forward and backward at all times
+*/
 namespace CS576.Janitor.Process
 {
     public class ArrowTick : MonoBehaviour

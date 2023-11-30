@@ -4,9 +4,23 @@ using UnityEngine;
 using CS576.Janitor.Trashes;
 
 
+/*
+    This class is the green compass arrow
+    The compass remains hidden until
+        the player has not pick up any trash in 15 seconds
+    When triggered, the compass arrow will show and 
+    a random trash on the map will be determined.
+    If there is such a trash, the compass will determine a
+    path between the player's location and the determined
+    trash's location. Guiding the player to go to there.
+    
+    If tehre is no such a trash, the arrow will not show
+    and the time counter will be reset.
+*/
 namespace CS576.Janitor.Process
 {
-    public class Compass: GOEventListener {
+    public class Compass: GOEventListener 
+    {
         [SerializeField] private GameObject _arrowModel;
         [SerializeField] private GameObject _janitor;
         private Vector2 GetJanitorPosition
@@ -22,7 +36,7 @@ namespace CS576.Janitor.Process
         [SerializeField] private float _arrowRotatingSpeed;
 
         [SerializeField] private float _evokeCompassTime;
-        [SerializeField] private float _dryTimer;
+        [SerializeField] private float _dryTimer; // increasing
         [SerializeField] private float _waypointRange;
 
         private WaypointGO[] _waypointGOs;
@@ -138,7 +152,6 @@ namespace CS576.Janitor.Process
             {
                 _dryTimer = 0f;
             }
-            _arrowModel.SetActive(true);
             MakePath();
         }
 
@@ -146,7 +159,12 @@ namespace CS576.Janitor.Process
         {
             GameObject optionalTrash = FindValidTrash();
             if (optionalTrash == null)
+            {
+                _dryTimer = 0f;
                 return;
+            }
+            
+            _arrowModel.SetActive(true);
 
             if (_currentInstantiatedTrashWaypointGO != null)
             {
