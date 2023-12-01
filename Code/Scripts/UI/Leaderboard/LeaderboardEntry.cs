@@ -2,7 +2,7 @@ using CS576.Janitor.Process;
 
 
 /*
-    Store player name, score & difficult 
+    Store player name, score & difficulty 
     in score mode.
 */
 namespace CS576.Janitor.UI
