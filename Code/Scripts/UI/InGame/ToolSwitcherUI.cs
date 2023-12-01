@@ -4,6 +4,17 @@ using System.Linq;
 using CS576.Janitor.Process;
 
 
+/*
+    UI components located on the upper right corner
+    of the game scene. It contains three sprites
+    for the player's currently carrying tools.
+    The one player is holding will be put in the center
+    The player can also switch the current to the
+    previous one or the next one. 
+
+    Key pressing is not handled here but from 
+    other scripts.
+*/
 namespace CS576.Janitor.UI
 {
     public class ToolSwitcherUI : MonoBehaviour
