@@ -1,5 +1,13 @@
 using UnityEngine;
 
+
+/*
+    A UI component with a fill bar and a pointer
+    (the curosr)
+
+    When the fillAmount is updated, the position
+    of the cursor also updates
+*/
 namespace CS576.Janitor.UI
 {
     public class BarPointerManager : MonoBehaviour
