@@ -4,7 +4,9 @@ using TMPro;
 
 
 /*
-    Does not work if the game has been end
+    Pause/uppause the game when the F key
+    is pressed.
+    Does not work if the game has been ended
 */
 
 namespace CS576.Janitor.UI
