@@ -8,7 +8,6 @@ using TMPro;
     is pressed.
     Does not work if the game has been ended
 */
-
 namespace CS576.Janitor.UI
 {
     public class GamePauser : MonoBehaviour
