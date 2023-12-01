@@ -1,5 +1,10 @@
 using UnityEngine;
 
+
+/*
+    The guide button located in the game mode
+    on the right side of the UI
+*/
 namespace CS576.Janitor.UI
 {
     public class GuideButton : MonoBehaviour
