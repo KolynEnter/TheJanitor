@@ -3,6 +3,10 @@ using System.IO;
 using CS576.Janitor.Process;
 
 
+/*
+    Reads the information from player score txt
+    and convert it to a list of Leaderboard Entries
+*/
 namespace CS576.Janitor.UI
 {
     public class ScoreFileReader
