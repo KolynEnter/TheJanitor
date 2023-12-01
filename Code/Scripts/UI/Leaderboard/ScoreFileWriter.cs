@@ -4,6 +4,19 @@ using System.IO;
 using System.Linq;
 
 
+/*
+    Writes to player score txt.
+    When player finishes a game in score mode
+    updates the new score
+
+    The line format should be
+    difficulty##name##score
+    where:
+    difficulty should be a string choose from
+        Normal / Hard
+    name is a string
+    score is an stringified integer
+*/
 namespace CS576.Janitor.UI
 {
     public class ScoreFileWriter
