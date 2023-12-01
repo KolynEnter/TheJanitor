@@ -2,6 +2,11 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+/*
+    Managed the UI part of the weight & 
+    capacity label.
+*/
 namespace CS576.Janitor.UI
 {
     public class CapacityUIManager : MonoBehaviour
