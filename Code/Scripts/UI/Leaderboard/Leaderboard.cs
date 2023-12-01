@@ -5,6 +5,14 @@ using UnityEngine;
 using TMPro;
 
 
+/*
+    From assignment 4's leaderboard
+    There is not much difference.
+    Except this one specifically records
+    the score in score mode, as well as
+    the difficulet in which the score was
+    produced
+*/
 namespace CS576.Janitor.UI
 {
     public class Leaderboard : MonoBehaviour
