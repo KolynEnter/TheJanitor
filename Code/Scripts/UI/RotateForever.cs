@@ -1,5 +1,10 @@
 using UnityEngine;
 
+
+/*
+    Rotates the host gameobject in the
+    y axis forever
+*/
 namespace CS576.Janitor.UI
 {
     public class RotateForever : MonoBehaviour
