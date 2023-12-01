@@ -2,6 +2,10 @@ using UnityEngine;
 using CS576.Janitor.Process;
 
 
+/*
+    The general game result panel shown
+    after the player has won/lost in game mode
+*/
 namespace CS576.Janitor.UI
 {
     public class GameResultPanel : MonoBehaviour
