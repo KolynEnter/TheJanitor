@@ -2,6 +2,19 @@ using UnityEngine;
 using CS576.Janitor.Trashes;
 using CS576.Janitor.Process;
 
+
+/*
+    The class for the trash bag
+    Updates both UI and data when updated
+
+    For UI, it goes to the slot of the trash and update the 
+    gameObject and the quantity label.
+
+    For data, it updates the quantity in trash container.
+
+    Also handles the weight carried in the bag.
+    In the beginning of a game, the tool weight will be added into the bag
+*/
 namespace CS576.Janitor.Prop
 {
     public class TrashBag : MonoBehaviour
@@ -22,8 +35,12 @@ namespace CS576.Janitor.Prop
             }
         }
 
+        [SerializeField]
+        private UI.CapacityUIManager _capUIManager;
+
         private Container<Trash> _container = new Container<Trash>(5);
 
+        // the total weight of tools
         private float _toolsWeight = 0;
 
         public float GetCurrentWeight
@@ -50,11 +67,19 @@ namespace CS576.Janitor.Prop
         public void AssignToolsWeight(float toolsWeight)
         {
             _toolsWeight = toolsWeight;
+            _capUIManager.UpdateUI(GetCurrentWeight, GetTotalCapacity);
+        }
+
+        public void AddToolsWeight(float addition)
+        {
+            _toolsWeight += addition;
+            _capUIManager.UpdateUI(GetCurrentWeight, GetTotalCapacity);
         }
 
         public void Increment(Trash trash)
         {
             _container.Increment(trash);
+            _capUIManager.UpdateUI(GetCurrentWeight, GetTotalCapacity);
         }
 
         public void Decrement(Trash trash)
@@ -72,6 +97,7 @@ namespace CS576.Janitor.Prop
                     _holdingTool.GetTool.DestroyGrabbingTrash();
                 }
             }
+            _capUIManager.UpdateUI(GetCurrentWeight, GetTotalCapacity);
         }
 
         public int GetNumberOf(Trash trash)

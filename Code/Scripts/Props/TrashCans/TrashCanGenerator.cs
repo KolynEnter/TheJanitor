@@ -2,6 +2,10 @@ using CS576.Janitor.Process;
 using UnityEngine;
 using System.Linq;
 
+
+/*
+    Generates all trashcan on the map before the game begins
+*/
 namespace CS576.Janitor.Trashes
 {
 

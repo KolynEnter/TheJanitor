@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEditor;
+
 /*
 public class RenameChildren : EditorWindow {
     private static readonly Vector2Int size = new Vector2Int(250, 100);
@@ -22,4 +23,11 @@ public class RenameChildren : EditorWindow {
         }
     }
 }
+*/
+
+/*
+    Note: In case I forgot to remove this script.
+    I took this code from online but I do not remember where it was
+    This class is used to rename children of a game object in the scene
+    it is essentially only for convenient purpose
 */

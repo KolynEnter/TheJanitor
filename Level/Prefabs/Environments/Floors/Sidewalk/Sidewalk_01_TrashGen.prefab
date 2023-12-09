@@ -98,6 +98,7 @@ MonoBehaviour:
   - {fileID: 179988, guid: 5e9f23a0d535d65438771a89191d0f83, type: 3}
   - {fileID: 119182, guid: 9e7b9a5d5dab450459315a75ec16fa02, type: 3}
   _source: 2
+  _spaceshipTrashIndicatorPrefab: {fileID: 1174454060617101863, guid: f039900ce8914234c956c01997f86156, type: 3}
 --- !u!114 &-3650977856195078528
 MonoBehaviour:
   m_ObjectHideFlags: 0

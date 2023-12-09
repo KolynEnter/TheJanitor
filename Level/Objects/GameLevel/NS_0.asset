@@ -17,13 +17,16 @@ MonoBehaviour:
   _limitMinutes: 15
   _goal: 0
   _spaceshipHP: 0
+  _spaceshpAttackPower: 0
   _spaceshipSpeed: 0
   _cityHP: 0
+  _cityHPRegeneration: 0
   _jammerProduceDemand: 0
   _minTrashNumber: 10
-  _maxTrashNumber: 300
+  _maxTrashNumber: 200
   _trashGenerateInterval: 20
   _trashGenerateNumber: 10
+  _startingJammerNumber: 0
   _modifiedTrashGenerateRate: []
   _modifiedTrashScore: []
   _modifiedTrashBarFillValue: []

@@ -4,8 +4,15 @@ using CS576.Janitor.Process;
 
 /*
     Trash generator is responsible for generating trash on the board
-*/
 
+    At the same time, it controls the number of trash on the board
+    by generating only necessary number of trash.
+
+    At any given time, the number of trash on map should be greater than
+        minTrashNumber.
+    and the number of trash on map should be smaller than
+        maxTrashNumber.
+*/
 namespace CS576.Janitor.Trashes
 {
     public class TrashGenerator : MonoBehaviour, IRequireGameSetterInitialize

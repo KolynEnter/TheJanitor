@@ -14,16 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mode: 2
   _difficulty: 0
-  _limitMinutes: 0
-  _goal: 0
-  _spaceshipHP: 0
-  _spaceshipSpeed: 0
-  _cityHP: 0
-  _jammerProduceDemand: 50
-  _minTrashNumber: 10
+  _limitMinutes: 1
+  _goal: 100
+  _spaceshipHP: 1
+  _spaceshpAttackPower: 30
+  _spaceshipSpeed: 10
+  _cityHP: 2500
+  _cityHPRegeneration: 40
+  _jammerProduceDemand: 20
+  _initialJammerDamage: 200
+  _minTrashNumber: 5
   _maxTrashNumber: 100
-  _trashGenerateInterval: 15
-  _trashGenerateNumber: 10
+  _trashGenerateInterval: 10
+  _trashGenerateNumber: 1
+  _startingJammerNumber: 3
   _modifiedTrashGenerateRate: []
   _modifiedTrashScore: []
   _modifiedTrashBarFillValue: []

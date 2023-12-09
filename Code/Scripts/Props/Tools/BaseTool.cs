@@ -1,8 +1,13 @@
 using UnityEngine;
 using System.Collections;
 using CS576.Janitor.Trashes;
+using CS576.Janitor.Process;
 
 
+/*
+    The base class for every tool in this game
+        -> Tool used to pick up trash
+*/
 namespace CS576.Janitor.Tools
 {
     public abstract class BaseTool : MonoBehaviour, ITool
@@ -27,10 +32,13 @@ namespace CS576.Janitor.Tools
         protected Animator _janitorAnim;
 
         [SerializeField]
-        protected Process.GOEvent _onTrashGrab;
+        protected GOEvent _onTrashGrab;
 
         [SerializeField]
         protected GameObject _trashParent;
+
+        [SerializeField]
+        private GameEvent _onPickupSpaceshipTrash;
 
 #nullable enable
         protected Trash? _onHoldingTrash;
@@ -43,7 +51,7 @@ namespace CS576.Janitor.Tools
         }
 #nullable disable
 
-        public Process.ToolType GetToolType
+        public ToolType GetToolType
         {
             get { return _toolStat.GetToolType; }
         }
@@ -67,12 +75,25 @@ namespace CS576.Janitor.Tools
 
         public virtual void OnSwitchToOtherTool()
         {
-            
+            _janitorAnim.Play("Idle");
         }
 
         public virtual void Grab(GameObject gameObj)
         {
 
+        }
+
+        protected void HideSpaceshipIndicator(TrashObject trashObj)
+        {
+            // Hide spaceship indicator
+            if (trashObj.transform.childCount > 0)
+            {
+                Transform trashChildTransform = trashObj.transform.GetChild(0);
+                trashChildTransform.gameObject.SetActive(false);
+
+                // trigger picking up spaceship trash event
+                _onPickupSpaceshipTrash.TriggerEvent();
+            }
         }
 
         protected virtual void PlayGrabbing(GameObject gameObj, TrashObject trashObj)
@@ -106,7 +127,7 @@ namespace CS576.Janitor.Tools
         {
             foreach(TrashTypeWithWeight ttww in _toolStat.GetTargetignTrashTypes)
             {
-                if (ttww.trashType == trash.GetTrashType)
+                if (trash != null && ttww.trashType == trash.GetTrashType)
                 {
                     if (ttww.lightOnly == trash.IsLightWeight || !ttww.lightOnly)
                     {

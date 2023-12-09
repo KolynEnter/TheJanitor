@@ -1,6 +1,12 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+
+/*
+    This class is the trash can.
+    Play the "trash is dumped from the top of the trashcan" animation
+    only visual purpose
+*/
 namespace CS576.Janitor.Trashes
 {
     public class TrashCan : MonoBehaviour
@@ -19,6 +25,9 @@ namespace CS576.Janitor.Trashes
         private Transform _dumpDestination;
         private float _destinationPositionY;
 
+        // each tracker tracks a single piece of trash
+        // mutliple trackers can work at the same time
+        // (many trash drops from the top of the trashcan)
         private List<DumpTracker> _dumpTrackers;
 
         private void Awake()
@@ -50,6 +59,11 @@ namespace CS576.Janitor.Trashes
             }
         }
 
+        /*
+            Instantiate a NEW gameobject of the same trash being dumped
+            Play the dumpping animation with this new gameobject,
+            not with the original one
+        */
         public void ReceiveTrash(Trash trash, GameObject trashGO)
         {
             if (trashGO != null)

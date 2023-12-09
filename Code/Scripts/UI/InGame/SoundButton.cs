@@ -2,6 +2,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
+/*
+    The sound button located in the game mode
+    on the right side of the UI
+*/
 namespace CS576.Janitor.UI
 {
     public class SoundButton : MonoBehaviour

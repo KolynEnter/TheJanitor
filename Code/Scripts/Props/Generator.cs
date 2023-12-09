@@ -1,5 +1,12 @@
 using UnityEngine;
 
+
+/*
+    Generator generates thing on the top of the host gameobject
+    (only consider x, z positions)
+    
+    Also can generate a random rotation by the given preference
+*/
 namespace CS576.Janitor.Prop
 {
     public class Generator : MonoBehaviour
@@ -25,11 +32,25 @@ namespace CS576.Janitor.Prop
             }
         }
 
+        /*
+            RootParent means the scene
+        */
         public Transform GetRootParentTransform
         {
-            get { return this.transform.parent.parent.parent; }
+            get 
+            {
+                Transform rootParent = transform.parent;
+                while (rootParent.parent != null)
+                {
+                    rootParent = rootParent.parent;
+                }
+                return rootParent.parent; 
+            }
         }
 
+        /*
+            Determine a random rotation by given rotation preference
+        */
         public Quaternion GetRandomRotationWith(RotationPreference preference)
         {
             Vector3 randomRotationVector = new Vector3

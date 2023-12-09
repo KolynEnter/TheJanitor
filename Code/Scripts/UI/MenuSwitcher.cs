@@ -23,6 +23,7 @@ namespace CS576.Janitor.UI
             _mainCanvas.gameObject.SetActive(true);
             _configCanvas.gameObject.SetActive(false);
         }
+
         // used in onClick() of main's
         // 'start' button
         public void SwtichToConfig()

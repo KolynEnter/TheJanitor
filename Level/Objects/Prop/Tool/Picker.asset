@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Picker
   m_EditorClassIdentifier: 
   _toolWeight: 500
-  _grabRangeModifier: 10
+  _grabRangeModifier: 20
   _targetingTrashTypes:
   - trashType: 0
     lightOnly: 1

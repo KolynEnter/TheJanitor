@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2326932}
   - component: {fileID: 64928827916404166}
   - component: {fileID: -4236255332022073795}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Prop_TrashBag_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,3 +120,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _trash: {fileID: 11400000, guid: 19eda8eff3b44a743840923430f1bfe3, type: 2}
+  source: 0

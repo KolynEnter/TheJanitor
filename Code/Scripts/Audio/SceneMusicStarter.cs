@@ -1,3 +1,4 @@
+using CS576.Janitor.Process;
 using UnityEngine;
 
 
@@ -6,14 +7,31 @@ using UnityEngine;
 */
 namespace CS576.Janitor.UI
 {
-    public class SceneMusicStarter : MonoBehaviour
+    public class SceneMusicStarter : MonoBehaviour, IRequireGameSetterInitialize
     {
         [SerializeField]
         private GameMusic _music;
 
+        private bool _isPlaying = false;
+
+        public void Initialize(GameSetter gameSetter)
+        {
+            if (gameSetter.GetGameLevel.GetMode == GameMode.Invasion)
+            {
+                AudioManager.Instance.PlayMusic(GameMusic.Invasion);
+            }
+            else
+            {
+                AudioManager.Instance.PlayMusic(_music);
+            }
+
+            _isPlaying = true;
+        }
+
         private void Start()
         {
-            AudioManager.Instance.PlayMusic(_music);
+            if (!_isPlaying)
+                AudioManager.Instance.PlayMusic(_music);
         }
     }
 }

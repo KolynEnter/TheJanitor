@@ -1,8 +1,6 @@
 using UnityEngine;
 
-
 /*
-    SO File naming:
     NC = "Normal classic"
     HC = "Hard classic"
 
@@ -11,7 +9,7 @@ using UnityEngine;
 
     NI = "Normal invasion"
     HI = "Hard invasion"
-    
+
     All game level SO should be stored
     to the gameSetter in a game scene.
     
@@ -20,13 +18,13 @@ using UnityEngine;
 
     You can make your own levels if you like
 */
+
 namespace CS576.Janitor.Process
 {
     [CreateAssetMenu(menuName = "ScriptableObjects/Variables/GameLevel", order = 4)]
     public class GameLevel : ScriptableObject
     {
         [Header("Level")]
-        
         [SerializeField]
         private GameMode _mode;
         public GameMode GetMode
@@ -50,7 +48,6 @@ namespace CS576.Janitor.Process
         }
 
         [Header("Classic")]
-
         [Tooltip("Only relevant in classic mode")]
         [Range(100, 1000)]
         [SerializeField]
@@ -61,9 +58,8 @@ namespace CS576.Janitor.Process
         }
 
         [Header("Invasion")]
-
         [Tooltip("Only relevant in invasion mode")]
-        [Range(1000, 30000)]
+        [Range(1, 30000)]
         [SerializeField]
         private float _spaceshipHP;
         public float GetSpaceshipHP
@@ -72,13 +68,13 @@ namespace CS576.Janitor.Process
         }
 
         [Tooltip("The amount of damage alien deals to city each time they drop a trash")]
-        [Range(10, 50)]
+        [Range(0, 50)]
+        [SerializeField]
         private float _spaceshpAttackPower;
         public float GetSpaceshipAttackPower
         {
             get { return _spaceshpAttackPower; }
         }
-        
 
         [Tooltip("Only relevant in invasion mode")]
         [Range(10, 20)]
@@ -90,7 +86,7 @@ namespace CS576.Janitor.Process
         }
 
         [Tooltip("Only relevant in invasion mode")]
-        [Range(1000, 2500)]
+        [Range(1, 2500)]
         [SerializeField]
         private float _cityHP;
         public float GetCityHP
@@ -100,6 +96,7 @@ namespace CS576.Janitor.Process
 
         [Tooltip("The amount of hp city regenerates from picking up trash dropped by alien")]
         [Range(10, 50)]
+        [SerializeField]
         private float _cityHPRegeneration;
         public float GetCityHPRegeneration
         {
@@ -107,7 +104,7 @@ namespace CS576.Janitor.Process
         }
 
         [Tooltip("Only relevant in invasion mode")]
-        [Range(50, 200)]
+        [Range(20, 200)]
         [SerializeField]
         private float _jammerProduceDemand;
         public float GetJammerProduceDemand
@@ -115,9 +112,18 @@ namespace CS576.Janitor.Process
             get { return _jammerProduceDemand; }
         }
 
+        [Tooltip("Only relevant in invasion mode")]
+        [Range(50, 200)]
+        [SerializeField]
+        private float _initialJammerDamage;
+        public float GetInitialJammerDamage
+        {
+            get { return _initialJammerDamage; }
+        }
+
         [Header("Trash")]
         [SerializeField]
-        [Range(10, 20)]
+        [Range(0, 20)]
         [Tooltip("The lowest number of trash can exist at a give time.")]
         private int _minTrashNumber;
         public int GetMinTrashNumber
@@ -144,12 +150,21 @@ namespace CS576.Janitor.Process
         }
 
         [SerializeField]
-        [Range(1, 20)]
-        [Tooltip("The number of trash generated for each call to trash generation.")]
+        [Range(0, 20)]
+        [Tooltip("The number of trash generated naturally for each call to trash generation.")]
         private int _trashGenerateNumber;
         public int GetTrashGenerateNumber
         {
             get { return _trashGenerateNumber; }
+        }
+
+        [SerializeField]
+        [Range(0, 10)]
+        [Tooltip("The number of jammers the player owns in the beginning of the game.")]
+        private int _startingJammerNumber;
+        public int GetStartingJammerNumber
+        {
+            get { return _startingJammerNumber; }
         }
 
         [Header("Modifications")]

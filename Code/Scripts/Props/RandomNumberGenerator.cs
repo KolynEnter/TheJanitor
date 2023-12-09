@@ -6,8 +6,12 @@ namespace CS576.Janitor.Process
     public static class RandomNumberGenerator
     {
         /*
-            I learned to write this function on stack overflow a
-            while ago now I cannot seem to be able to find its source.
+            This is a random function I have been using for my developments.
+            It takes in a seed value and convert it to hashcode,
+            then it gets the current time tick and combine the hashed seed
+            value with the tick value. 
+
+            Initialize the random state with the combined seed.
         */
         public static void InitializeRandomEnvironment(string seed = "seed")
         {
@@ -19,6 +23,12 @@ namespace CS576.Janitor.Process
             UnityEngine.Random.InitState(combinedSeed);
         }
 
+        /*
+            Generate a random number between the lower bound and
+            upper bound (inclusive)
+
+            Usually works with the above function
+        */
         public static int GenerateBetween(int lowerbound, int upperbound, int rollTime = 10)
         {
             int randomNumber = 0;

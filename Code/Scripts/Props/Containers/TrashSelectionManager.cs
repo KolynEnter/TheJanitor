@@ -1,5 +1,12 @@
 using UnityEngine;
 
+
+/*
+    Controls the currently selected trash slot
+    It will also update the UI cursor in the trash bag
+
+    Listens to keyboard keys 1, 2, 3, 4, 5
+*/
 namespace CS576.Janitor.Prop
 {
     public class TrashSelectionManager : MonoBehaviour

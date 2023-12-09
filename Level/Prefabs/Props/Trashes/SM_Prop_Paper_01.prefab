@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2318360}
   - component: {fileID: 65154587199879484}
   - component: {fileID: -7770072665603573316}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Prop_Paper_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 62e25ef75a2216f418d06453c9ad15cb, type: 2}
+  - {fileID: 2100000, guid: 7d32c8cc713a18045a5e23d63c61d599, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -119,3 +119,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _trash: {fileID: 11400000, guid: 1debdaec4888d754384516f3c3858265, type: 2}
+  source: 0

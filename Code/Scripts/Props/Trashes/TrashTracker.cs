@@ -1,6 +1,11 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+
+/*
+    Tracks all trash in the game board
+    by keeping a list of their references
+*/
 namespace CS576.Janitor.Trashes
 {
     public static class TrashTracker

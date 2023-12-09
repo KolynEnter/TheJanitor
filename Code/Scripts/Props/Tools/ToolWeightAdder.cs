@@ -3,9 +3,15 @@ using CS576.Janitor.Prop;
 using CS576.Janitor.Process;
 
 
+/*
+    Add the tools' weight to the trash bag
+    in the beginning of the game
+
+    The weight of jammers added later is not handled here but in the jammer tracker
+*/
 namespace CS576.Janitor.Tools
 {
-    public class ToolWeightAdder : MonoBehaviour
+    public class ToolWeightAdder : MonoBehaviour, IRequireGameSetterInitialize
     {
         [SerializeField]
         private GameObject _rightHandItemHolder;
@@ -14,16 +20,13 @@ namespace CS576.Janitor.Tools
         private TrashBag _trashBag;
 
         [SerializeField]
-        private UI.CapacityUIManager _capUIManager;
+        private ToolStat _jammerStat;
 
-        [SerializeField]
-        private GameSetter _gameSetting;
-
-        private void Start()
+        public void Initialize(GameSetter gameSetter)
         {
             float totalToolsWeight = 0;
-            ToolType tool1 = _gameSetting.GetConfig.Tool1;
-            ToolType tool2 = _gameSetting.GetConfig.Tool2;
+            ToolType tool1 = gameSetter.GetConfig.Tool1;
+            ToolType tool2 = gameSetter.GetConfig.Tool2;
 
             for (int i = 0; i < _rightHandItemHolder.transform.childCount; i++)
             {
@@ -34,13 +37,14 @@ namespace CS576.Janitor.Tools
                 BaseTool tool = childTransform.GetComponent<BaseTool>();
                 if (tool != null)
                 {
-                    if (tool.GetToolType == tool1 || tool.GetToolType == tool2)
+                    if (tool.GetToolType == tool1 || tool.GetToolType == tool2 && tool.GetToolType != ToolType.Jammer)
                         totalToolsWeight += tool.GetToolWeight;
                 }
             }
-            _trashBag.AssignToolsWeight(totalToolsWeight);
 
-            _capUIManager.UpdateUI(_trashBag.GetCurrentWeight, _trashBag.GetTotalCapacity);
+            totalToolsWeight += _jammerStat.GetToolWeight * gameSetter.GetGameLevel.GetStartingJammerNumber;
+
+            _trashBag.AssignToolsWeight(totalToolsWeight);
         }
     }
 }

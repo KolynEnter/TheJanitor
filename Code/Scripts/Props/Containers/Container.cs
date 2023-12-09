@@ -1,8 +1,11 @@
 #nullable enable
 
-using System;
-using System.Collections.Generic;
 
+/*
+    A data structure used to store things so that
+    each element has a quantity, and when its quantity is 0,
+    it is removed from the container.
+*/
 namespace CS576.Janitor.Process
 {
     public struct Container<T> where T : class
@@ -103,9 +106,11 @@ namespace CS576.Janitor.Process
 
             for (int i = 0; i < _elementsWithNumber.Length; i++)
             {
-                ElementWithNumber<T> copiedEn = new ElementWithNumber<T>();
-                copiedEn.element = _elementsWithNumber[i].element;
-                copiedEn.number = _elementsWithNumber[i].number;
+                ElementWithNumber<T> copiedEn = new ElementWithNumber<T>
+                {
+                    element = _elementsWithNumber[i].element,
+                    number = _elementsWithNumber[i].number
+                };
                 copy[i] = copiedEn;
             }
 

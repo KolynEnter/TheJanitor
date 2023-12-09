@@ -23,6 +23,6 @@ MonoBehaviour:
     lightOnly: 0
   - trashType: 3
     lightOnly: 0
-  _relativeHoldPosition: {x: 0, y: 0, z: 0}
+  _relativeHoldPosition: {x: -0.332, y: -0.014, z: 0.404}
   _relativeHoldRotation: {x: 0, y: 0, z: 0}
   _toolType: 4

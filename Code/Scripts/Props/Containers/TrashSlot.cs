@@ -2,6 +2,12 @@ using UnityEngine;
 using TMPro;
 using CS576.Janitor.Trashes;
 
+
+/*
+    The UI for the trash slot in the trash bag
+    Controls the current displaying trash gameobject and 
+    its associated quantity label
+*/
 namespace CS576.Janitor.Prop
 {
     public class TrashSlot : MonoBehaviour
@@ -37,7 +43,10 @@ namespace CS576.Janitor.Prop
         {
             if (_trashSlot.transform.childCount > 0)
             {
-                Destroy(_trashSlot.transform.GetChild(0).gameObject);
+                for (int i = 0; i < _trashSlot.transform.childCount; i++)
+                {
+                    Destroy(_trashSlot.transform.GetChild(i).gameObject);
+                }
             }
             
             _storedTrashGO = trashGO;

@@ -1,12 +1,12 @@
 using UnityEngine;
 
+
 /*
     can dump the trash by long pressing the trash can
     the first 3 trash will be dumpped at a rate of 0.5s / trash
     after that, the rate will be 0.1s / trash
     disengaging from current press will reset rate
 */
-
 namespace CS576.Janitor.Character
 {
     public class LongPressDumpDeterminer

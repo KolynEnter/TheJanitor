@@ -14,16 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mode: 0
   _difficulty: 0
-  _limitMinutes: 1
+  _limitMinutes: 10
   _goal: 100
   _spaceshipHP: 0
+  _spaceshpAttackPower: 0
   _spaceshipSpeed: 0
   _cityHP: 0
+  _cityHPRegeneration: 0
   _jammerProduceDemand: 0
+  _initialJammerDamage: 0
   _minTrashNumber: 10
-  _maxTrashNumber: 100
+  _maxTrashNumber: 200
   _trashGenerateInterval: 15
   _trashGenerateNumber: 20
+  _startingJammerNumber: 0
   _modifiedTrashGenerateRate:
   - trash: {fileID: 11400000, guid: 19eda8eff3b44a743840923430f1bfe3, type: 2}
     generateRate: 0
@@ -44,7 +48,7 @@ MonoBehaviour:
   - trash: {fileID: 11400000, guid: 1debdaec4888d754384516f3c3858265, type: 2}
     fillValue: 0
   - trash: {fileID: 11400000, guid: 6632aceb6dabc9845a7b9edce7dbf253, type: 2}
-    fillValue: 100
+    fillValue: 10
   _trashCanChance:
   - trashType: 0
     chance: 20

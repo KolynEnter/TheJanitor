@@ -1,6 +1,11 @@
 using UnityEngine;
 using System;
 
+
+/*
+    The SO for trash.
+    Stores data about trash.
+*/
 namespace CS576.Janitor.Trashes
 {
     [CreateAssetMenu(menuName = "ScriptableObjects/Trash", order = 0)]

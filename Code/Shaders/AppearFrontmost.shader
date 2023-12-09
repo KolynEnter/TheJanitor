@@ -1,3 +1,5 @@
+// changing the render queue to make the object always appear the front most
+// got the idea from here: https://forum.unity.com/threads/always-render-3d-object-in-front-of-everything-no-matter-its-position.516975/
 Shader "Custom/AppearFrontMost"
 {
     Properties
@@ -12,7 +14,7 @@ Shader "Custom/AppearFrontMost"
         Tags { 
             "RenderType"="Opaque"
             "Queue"="Geometry+10"
-             }
+            }
         //LOD 200
 
         ZTest always

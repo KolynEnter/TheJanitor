@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b71e46c9c42744742b514290bf6744d0, type: 3}
   m_Name: Jammer
   m_EditorClassIdentifier: 
-  _toolWeight: 0
-  _grabRangeModifier: 0
+  _toolWeight: 50
+  _grabRangeModifier: 5
   _targetingTrashTypes: []
   _relativeHoldPosition: {x: 0, y: 0, z: 0}
   _relativeHoldRotation: {x: 0, y: 0, z: 0}

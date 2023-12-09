@@ -1,6 +1,10 @@
 using UnityEngine;
 using CS576.Janitor.Trashes;
 
+
+/*
+    A SO that stores additional data about a tool
+*/
 namespace CS576.Janitor.Tools
 {
     [CreateAssetMenu(menuName = "ScriptableObjects/Tool/Stat", order = 0)]

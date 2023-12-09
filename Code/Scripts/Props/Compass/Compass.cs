@@ -19,8 +19,7 @@ using CS576.Janitor.Trashes;
 */
 namespace CS576.Janitor.Process
 {
-    public class Compass: GOEventListener 
-    {
+    public class Compass: GOEventListener {
         [SerializeField] private GameObject _arrowModel;
         [SerializeField] private GameObject _janitor;
         private Vector2 GetJanitorPosition
@@ -36,10 +35,8 @@ namespace CS576.Janitor.Process
         [SerializeField] private float _arrowRotatingSpeed;
 
         [SerializeField] private float _evokeCompassTime;
-        [SerializeField] private float _dryTimer; // increasing
+        [SerializeField] private float _dryTimer;
         [SerializeField] private float _waypointRange;
-
-        private WaypointGO[] _waypointGOs;
 
         [SerializeField] private List<WaypointGO> _currentFollowingPath;
         [SerializeField] private Vector3 _currentTrashPosition;
@@ -47,6 +44,8 @@ namespace CS576.Janitor.Process
         [SerializeField] private GameObject _currentLockedTrash;
 
         private GameObject _currentInstantiatedTrashWaypointGO;
+
+        private CityWaypointPathSearcher _searcher;
         
         private float _updateRate = 0.25f;
 
@@ -65,9 +64,10 @@ namespace CS576.Janitor.Process
         {
             Time.fixedDeltaTime = _updateRate;
 
-            _waypointGOs = FindObjectsOfType<WaypointGO>();
-            _waypointGOs = _waypointGOs.Where(x=>x.GetDedication == WaypointDedication.Trash).ToArray();
+            WaypointGO[] waypointGOs = FindObjectsOfType<WaypointGO>();
+            waypointGOs = waypointGOs.Where(x=>x.GetDedication == WaypointDedication.City).ToArray();
 
+            _searcher = new CityWaypointPathSearcher(waypointGOs);
             _currentFollowingPath = new List<WaypointGO>();
 
             _arrowModel.SetActive(false);
@@ -106,7 +106,7 @@ namespace CS576.Janitor.Process
 
         private void HandlePlayerNotFollowingPath()
         {
-            WaypointGO closestWaypointGOToJanitor = FindClosestWaypointGOTo(GetJanitorPosition);
+            WaypointGO closestWaypointGOToJanitor = _searcher.FindClosestWaypointGOTo(GetJanitorPosition);
                 // the player is not following the path
                 if (closestWaypointGOToJanitor != _currentClosestWaypointGOToJanitor && 
                     closestWaypointGOToJanitor != _currentFollowingPath[0])
@@ -159,11 +159,8 @@ namespace CS576.Janitor.Process
         {
             GameObject optionalTrash = FindValidTrash();
             if (optionalTrash == null)
-            {
-                _dryTimer = 0f;
                 return;
-            }
-            
+
             _arrowModel.SetActive(true);
 
             if (_currentInstantiatedTrashWaypointGO != null)
@@ -172,10 +169,10 @@ namespace CS576.Janitor.Process
             }
 
             Transform trashTransform = optionalTrash.transform;
-            WaypointGO closestWaypointGOToJanitor = FindClosestWaypointGOTo(GetJanitorPosition);
+            WaypointGO closestWaypointGOToJanitor = _searcher.FindClosestWaypointGOTo(GetJanitorPosition);
             _currentTrashPosition = trashTransform.position;
 
-            WaypointGO closestWaypointGOToTrash = FindClosestWaypointGOTo(
+            WaypointGO closestWaypointGOToTrash = _searcher.FindClosestWaypointGOTo(
                                                         new Vector2(_currentTrashPosition.x, 
                                                                     _currentTrashPosition.z));
             _currentClosestWaypointGOToJanitor = closestWaypointGOToTrash;
@@ -184,7 +181,7 @@ namespace CS576.Janitor.Process
             // There is no path yet, or
             // Player is not following the path
             // Create a new path
-            List<WaypointGO> path = FindPath(closestWaypointGOToJanitor, closestWaypointGOToTrash);
+            List<WaypointGO> path = _searcher.FindPath(closestWaypointGOToJanitor, closestWaypointGOToTrash);
 
             // Procedurely generate a WaypointGO to represent the trash's spot
             GameObject trashWayPointGO = new GameObject("TrashWaypoint");
@@ -226,85 +223,15 @@ namespace CS576.Janitor.Process
 #nullable enable
         private GameObject? FindOneTrash()
         {
-            List<GameObject> trashGOs = Trashes.TrashTracker.GetTrashGOs;
+            List<GameObject> trashGOs = TrashTracker.GetTrashGOs;
             if (trashGOs.Count == 0)
             {
+                Debug.Log("Could not find even one piece of trash.");
                 return null;
             }
             return trashGOs[Random.Range(0, trashGOs.Count-1)];
         }
 #nullable disable
-
-        private List<WaypointGO> FindPath(WaypointGO startPoint, WaypointGO finalPoint)
-        {
-            List<WaypointGO> visitedPoints = new List<WaypointGO>();
-            List<WaypointGO> result = new List<WaypointGO>();
-
-            if (DFS(startPoint, finalPoint, visitedPoints, result))
-            {
-                result.Add(startPoint);
-                result.Reverse();
-            }
-
-            return result;
-        }
-
-        private bool DFS(WaypointGO current, 
-                        WaypointGO target, 
-                        List<WaypointGO> visitedPoints,
-                        List<WaypointGO> path)
-        {
-            visitedPoints.Add(current);
-
-            if (current == target)
-            {
-                return true;
-            }
-
-            Vector2 targetPosition = new Vector2(
-                                                    target.transform.position.x,
-                                                    target.transform.position.z
-                                                );
-
-            List<WaypointGO> orderedList = current.GetNeighbors
-                                            .OrderBy(waypoint => {
-                                                Vector2 wayposition = new Vector2(
-                                                    waypoint.transform.position.x,
-                                                    waypoint.transform.position.z
-                                                );
-                                                return (wayposition - targetPosition).magnitude;
-                                            }).ToList();
-
-            foreach (WaypointGO neighbor in orderedList)
-            {
-                if (!visitedPoints.Contains(neighbor) && 
-                    DFS(neighbor, target, visitedPoints, path))
-                {
-                    path.Add(neighbor);
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        private WaypointGO FindClosestWaypointGOTo(Vector2 position)
-        {
-            float shortDist = 10000f;
-            WaypointGO result = _waypointGOs[0];
-            foreach (WaypointGO waypointGO in _waypointGOs)
-            {
-                Vector2 wayposition = new Vector2(waypointGO.transform.position.x,
-                                                waypointGO.transform.position.z);
-                if ((wayposition - position).magnitude < shortDist)
-                {
-                    shortDist = (wayposition - position).magnitude;
-                    result = waypointGO;
-                }
-            }
-
-            return result;
-        }
 
         private bool InRange(float range, WaypointGO center, Vector2 position)
         {

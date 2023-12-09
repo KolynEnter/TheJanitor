@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 
 /*
-    A SO event triggered without a GameObject
+    A SO event triggered with a GameObject
 */
 namespace CS576.Janitor.Process
 {

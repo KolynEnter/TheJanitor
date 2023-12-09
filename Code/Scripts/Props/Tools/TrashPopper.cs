@@ -3,6 +3,11 @@ using System.Collections;
 using CS576.Janitor.Trashes;
 
 
+/*
+    The tool Trashpopper
+    Can pick up light-weight paper, can, plastic trash
+    Weight cost: 5000
+*/
 namespace CS576.Janitor.Tools
 {
     public class TrashPopper : BaseTool
@@ -14,6 +19,7 @@ namespace CS576.Janitor.Tools
         {
             base.OnSwitchToThisTool();
             _area.enabled = true;
+            _janitorAnim.Play("Popper_Idle");
             _janitorAnim.SetBool("IsHoldingPopper", true);
         }
 
@@ -35,6 +41,8 @@ namespace CS576.Janitor.Tools
 
             if (CanWorkOnTrash(trashObj))
             {
+                // Hide spaceship indicator
+                HideSpaceshipIndicator(trashObj);
                 PlayGrabbing(gameObj, trashObj);
             }
         }

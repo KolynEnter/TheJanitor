@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2354276}
   - component: {fileID: 64520211492914196}
   - component: {fileID: 1419083515434180698}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SM_Prop_Soda_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,3 +120,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _trash: {fileID: 11400000, guid: 6632aceb6dabc9845a7b9edce7dbf253, type: 2}
+  source: 0

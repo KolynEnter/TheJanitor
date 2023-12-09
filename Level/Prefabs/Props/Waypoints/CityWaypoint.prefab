@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1386604076286807157}
   - component: {fileID: 4488822301189709368}
   m_Layer: 0
-  m_Name: TrashWayPoint
+  m_Name: CityWaypoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

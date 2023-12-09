@@ -3,6 +3,11 @@ using System.Collections;
 using CS576.Janitor.Trashes;
 
 
+/*
+    The tool Trash picker
+    Can pick up any light-weight trash
+    Weight cost: 500
+*/
 namespace CS576.Janitor.Tools
 {
     public class TrashPicker : BaseTool
@@ -33,6 +38,7 @@ namespace CS576.Janitor.Tools
 
             if (CanWorkOnTrash(trashObj))
             {
+                HideSpaceshipIndicator(trashObj);
                 PlayGrabbing(gameObj, trashObj);
             }
         }

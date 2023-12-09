@@ -1,7 +1,10 @@
 using UnityEngine;
 
-// Track dummping of a single piece of trash at a time
 
+/*
+    This is for animation of the trash being dumped into the trashcan
+    Track dummping of a single piece of trash at a time
+*/
 namespace CS576.Janitor.Trashes
 {
     public struct DumpTracker

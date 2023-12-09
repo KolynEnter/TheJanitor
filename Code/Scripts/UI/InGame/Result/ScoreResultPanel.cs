@@ -3,6 +3,10 @@ using TMPro;
 using CS576.Janitor.Process;
 
 
+/*
+    The game result panel shown after
+    the timer has ended in score mode
+*/
 namespace CS576.Janitor.UI
 {
     public class ScoreResultPanel : GameResultPanel

@@ -54,21 +54,10 @@ namespace CS576.Janitor.Process
             }
             else if (_goalManager.GetGameMode == GameMode.Invasion)
             {
-                // if val is negative, player has dump into the wrong can
-                // reduce city hp
-                
-
-                // if val is positive, player has dump into the correct can
-                // add process to making jammer
-
-
+                // do nothing from this script
             }
         }
 
-        /*
-            Progress the goal fill bar, or de-progress it
-            if val is negative
-        */
         private void ClassicModeModification(int val)
         {
             if (_goalBarFillImage.fillAmount < 1.0f)
@@ -83,10 +72,6 @@ namespace CS576.Janitor.Process
             }
         }
 
-        /*
-            Increase the score, or decrease the score
-            if val is negative
-        */
         private void ScoreModeModification(int val)
         {
             _goalManager.currentScore += val;

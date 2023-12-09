@@ -28,11 +28,11 @@ namespace CS576.Janitor.Trashes
             int counter = 0;
             for (int i = listenerArray.Length - 1; i >= 0; i--)
             {
-                bool result = listenerArray[i].OnEventTriggered(modifiedTrashGenerateRate);
-
                 if (counter >= generateNumber)
                     return;
-                if (result) // successfully generated trash for this listener
+                GameObject result = listenerArray[i].OnEventTriggered(modifiedTrashGenerateRate);
+
+                if (result != null) // successfully generated trash for this listener
                     counter++;
 
             }

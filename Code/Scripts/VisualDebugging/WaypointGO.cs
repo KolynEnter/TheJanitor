@@ -1,6 +1,13 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+
+/*
+    A waypoint spread across the city.
+    Represented in Gizmo as a cubic with color
+
+    For now, the city waypoints are connected by a line
+*/
 namespace CS576.Janitor.Process
 {
     [ExecuteInEditMode]
@@ -42,10 +49,12 @@ namespace CS576.Janitor.Process
         {
             switch (GetDedication)
             {
-                case WaypointDedication.Trash:
+                case WaypointDedication.City:
                     return Color.red;
                 case WaypointDedication.TrashCan:
                     return Color.green;
+                case WaypointDedication.NPCSpawn:
+                    return Color.blue;
                 default:
                     return Color.gray;
             }
@@ -63,6 +72,7 @@ namespace CS576.Janitor.Process
             }
         }
 */
+
         public bool ContainsNeighbor(WaypointGO other)
         {
             return _neighbors.Contains(other);

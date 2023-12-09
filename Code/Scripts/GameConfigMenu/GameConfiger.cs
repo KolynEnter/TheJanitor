@@ -99,6 +99,15 @@ namespace CS576.Janitor.Process
             if (Enum.IsDefined(typeof(GameMode), nextIndex))
             {
                 _config.gameMode = (GameMode) nextIndex;
+
+                if (_config.gameMode == GameMode.Invasion)
+                {
+                    _tool2ButtonObject.SetActive(false);
+                }
+                else
+                {
+                    _tool2ButtonObject.SetActive(true);
+                }
             }
         }
 

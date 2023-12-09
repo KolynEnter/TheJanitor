@@ -7,7 +7,7 @@ using CS576.Janitor.Process;
     Listens to a GameObject event (GOEvent)
     The received game object must be a trash
 
-    updates the trash in trash bag (both data & UI)
+    updates the trash in trash bag (data)
 */
 namespace CS576.Janitor.Trashes
 {
@@ -18,9 +18,6 @@ namespace CS576.Janitor.Trashes
 
         [SerializeField]
         private TrashSlot[] _slots;
-
-        [SerializeField]
-        private UI.CapacityUIManager _capUIManager;
 
         [SerializeField]
         private StringEvent _chatEvent;
@@ -42,11 +39,8 @@ namespace CS576.Janitor.Trashes
             // instantiate a completely new copy for 3d trash UI representation
             _slots[trashIndex].SetTrashSlot(Instantiate(go));
 
-            // Updates the bag capacity since a new trash is added
-            _capUIManager.UpdateUI(_trashBag.GetCurrentWeight, _trashBag.GetTotalCapacity);
-
             // telling the player a new trash is added to the bag
-            _chatEvent.TriggerEvent(trash.GetName);
+            _chatEvent.TriggerEvent(go.ToString());
         }
     }
 }

@@ -1,15 +1,20 @@
 using UnityEngine;
 using CS576.Janitor.Process;
-using TMPro;
+
 
 /*
     One of the "evil classes". Handles not only the animation
     but also the logic after it
-*/
 
+    Handles:
+    the animations played when "goal fulfilled" or "time out"
+    An image will slide from the right side.
+
+    After that, display the game result panel
+*/
 namespace CS576.Janitor.UI
 {
-    public class PanelShift : MonoBehaviour
+    public class PanelShift : MonoBehaviour, IRequireGameSetterInitialize
     {
         [SerializeField]
         private float _initialPositionX;
@@ -27,13 +32,15 @@ namespace CS576.Janitor.UI
         private GameObject _componentsHolder;
 
         [SerializeField]
-        private GameSetter _setter;
-
-        [SerializeField]
         private ClassicResultPanel _classicResultPanel; // lose the game
 
         [SerializeField]
         private ScoreResultPanel _scoreResultPanel; // show the score
+
+        [SerializeField]
+        private InvasionResultPanel _invasionResultPanel;
+
+        private GameMode _mode;
 
         private float _currentPositionX; 
 
@@ -82,7 +89,7 @@ namespace CS576.Janitor.UI
             }
             else if (!_hasBeenPerformed)
             {
-                // Stopping...
+                // Animation stopping for a brief moment...
                 if (!_timer.IsTimeOut())
                 {
                     _timer.ElapseTime();
@@ -96,14 +103,18 @@ namespace CS576.Janitor.UI
                     _hasBeenPerformed = true;
 
                     // Time's up!
-                    if (_setter.GetGameLevel.GetMode == GameMode.Classic)
+                    if (_mode == GameMode.Classic)
                     {
                         Debug.Log("Show the classic result panel");
                         _classicResultPanel.ShowPanel();
                     }
-                    else
+                    else if (_mode == GameMode.Classic)
                     {
                         _scoreResultPanel.ShowPanel();
+                    }
+                    else
+                    {
+                        _invasionResultPanel.ShowPanel();
                     }
                     return;
                 }
@@ -116,6 +127,11 @@ namespace CS576.Janitor.UI
         {
             _isTriggered = true;
             _componentsHolder.SetActive(true);
+        }
+
+        public void Initialize(GameSetter gameSetter)
+        {
+            _mode = gameSetter.GetGameLevel.GetMode;
         }
     }
 }

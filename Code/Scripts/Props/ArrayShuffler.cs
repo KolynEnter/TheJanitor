@@ -2,6 +2,12 @@ using System.Collections.Generic;
 using System.Linq;
 
 
+/*
+    A static class that shuffles the given array
+    and return the shuffled array when done.
+
+    Does not modfiy the original array.
+*/
 namespace CS576.Janitor.Process
 {
     public static class ArrayShuffler

@@ -27,7 +27,7 @@ namespace CS576.Janitor.Character
         private float _timeSinceLastMove = 0f;
         private float _idleTimeThreshold = 0.5f;
         private bool _isPlayerStuck = false;
-        /* Check if player is stuck */
+        /* Check if play is stuck */
 
         private Vector3 _moveDirection = Vector3.zero;
 

@@ -1,6 +1,3 @@
-using UnityEngine;
-
-
 /*
     If a MonoBehaviour depends on gameSwtter,
     It ought to implement this interface.

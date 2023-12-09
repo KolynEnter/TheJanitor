@@ -11,6 +11,7 @@ using CS576.Janitor.Prop;
 namespace CS576.Janitor.Process
 {
     [RequireComponent(typeof(Generator))]
+    [RequireComponent(typeof(BoxCollider))]
     public class TrashGenerateListener : MonoBehaviour
     {
         [SerializeField]
@@ -24,27 +25,34 @@ namespace CS576.Janitor.Process
 
         private Generator _generator;
 
+        private void Start()
+        {
+            _generator = this.GetComponent<Generator>();
+        }
+
         private void OnEnable()
         {
             if (_event != null)
             {
                 _event.AddListener(this);
-                _generator = this.GetComponent<Generator>();
             }
         }
 
         private void OnDisable()
         {
-            _event.RemoveListener(this);
+            if (_event != null)
+            {
+                _event.RemoveListener(this);
+            }
         }
 
         /*
             Receive generate rate for each type of trash
             Job: to generate copy of valid trash prefab near source location
-            On generate success: return true
-            On generate fail: return false
+            On generate success: return the created trash copy
+            On generate fail: return null
         */
-        public bool OnEventTriggered(TrashWithGenerateRate[] modifiedTrashGenerateRate)
+        public virtual GameObject OnEventTriggered(TrashWithGenerateRate[] modifiedTrashGenerateRate)
         {
             foreach (GameObject generableTrash in _generableTrashes)
             {
@@ -58,24 +66,26 @@ namespace CS576.Janitor.Process
                 
                 if (chance >= GetModifiedChance(modifiedTrashGenerateRate, trash)) continue;
 
-                CreateTrashCopyOf(generableTrash, trash);
-                return true;
+                return CreateTrashCopyOf(generableTrash, trash);
             }
 
-            return false;
+            return null;
         }
 
-        private void CreateTrashCopyOf(GameObject generableTrash, Trash trash)
+        private GameObject CreateTrashCopyOf(GameObject generableTrash, Trash trash)
         {
-            GameObject instantiatedTrashObj = Instantiate(generableTrash);
-            TrashObject newTrashObj = instantiatedTrashObj.GetComponent<TrashObject>();
+            GameObject instantiatedTrashGO = Instantiate(generableTrash);
+
+            TrashObject newTrashObj = instantiatedTrashGO.GetComponent<TrashObject>();
             if (newTrashObj == null)
                 throw new Exception("The newly generated trash does not have trash object.");
             newTrashObj.source = _source;
-            TrashTracker.AddTrashGO(instantiatedTrashObj);
-            instantiatedTrashObj.transform.position = _generator.GetRandomGeneratePosition;
-            instantiatedTrashObj.transform.rotation = _generator.GetRandomRotationWith(trash.GetGenRotationPref);
-            instantiatedTrashObj.transform.SetParent(_generator.GetRootParentTransform);
+            TrashTracker.AddTrashGO(instantiatedTrashGO);
+            instantiatedTrashGO.transform.position = _generator.GetRandomGeneratePosition;
+            instantiatedTrashGO.transform.rotation = _generator.GetRandomRotationWith(trash.GetGenRotationPref);
+            instantiatedTrashGO.transform.SetParent(_generator.GetRootParentTransform);
+
+            return instantiatedTrashGO;
         }
 
         private float GetModifiedChance(TrashWithGenerateRate[] modifiedTrashGenerateRate, 

@@ -20,6 +20,8 @@ namespace CS576.Janitor.Tools
         private Image _jammerDemandFillImage;
         [SerializeField]
         private StringEvent _chatEvent;
+        [SerializeField]
+        private JammerTracker _tracker;
 
         private float _totalJammerProduceDemand;
         private GameMode _gameMode;
@@ -30,15 +32,21 @@ namespace CS576.Janitor.Tools
         public override void OnEventTriggered(Trash trash, TrashType canType)
         {
             if (_gameMode != GameMode.Invasion)
+            {
+                Debug.Log("It is not invasion mode.");
                 return;
+            }
 
             if (trash == null)
+            {
+                Debug.Log("The trash is null, cannot produce jammer.");
                 return;
+            }
             
             int fillValue = trash.GetTrashType == canType ? 
                                         GetModifiedTrashValue(trash) : 
                                         -GetModifiedTrashValue(trash);
-            
+
             if (fillValue > 0)
             {
                 // fill demand
@@ -58,6 +66,7 @@ namespace CS576.Janitor.Tools
         private void AddJammerToPlayer()
         {
             _chatEvent.TriggerEvent("Number of jammer + 1.");
+            _tracker.IncrementJammerQuantity();
         }
 
         public void Initialize(GameSetter gameSetter)
@@ -65,6 +74,8 @@ namespace CS576.Janitor.Tools
             _totalJammerProduceDemand = gameSetter.GetGameLevel.GetJammerProduceDemand;
             _gameMode = gameSetter.GetGameLevel.GetMode;
             _modifiedTrashBarFillValue = gameSetter.GetGameLevel.GetModifiedTrashBarFillValue;
+
+            Debug.Log("Jammer demand " + _totalJammerProduceDemand);
         }
 
         private int GetModifiedTrashValue(Trash trash)

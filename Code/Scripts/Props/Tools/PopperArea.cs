@@ -3,12 +3,21 @@ using System.Collections.Generic;
 using CS576.Janitor.Trashes;
 
 
+/*
+    The effective area of the tool 'trashpopper'
+    Represented as the white lighting circle in front
+    of the player when he is holding trashpopper gun.
+
+    Keeps a list of trash within range.
+    Attempts to attract them to the mouth of the
+    trashpopper gun every 0.5 seconds.
+*/
 namespace CS576.Janitor.Tools
 {
     public class PopperArea : MonoBehaviour
     {
         [SerializeField]
-        private TrashPopper _Popper;
+        private TrashPopper _popper;
 
         private List<TrashObject> _trashObjectsInZone = new List<TrashObject>();
 
@@ -29,13 +38,13 @@ namespace CS576.Janitor.Tools
 
         private void FixedUpdate()
         {
-            if (_Popper.gameObject.activeSelf)
+            if (_popper.gameObject.activeSelf)
             {
                 for (int i = 0; i < _trashObjectsInZone.Count; i++)
                 {
                     if (_trashObjectsInZone[i] != null)
                     {
-                        _Popper.Grab(_trashObjectsInZone[i].gameObject);
+                        _popper.Grab(_trashObjectsInZone[i].gameObject);
                     }
                 }
             }

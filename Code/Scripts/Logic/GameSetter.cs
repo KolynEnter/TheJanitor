@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Linq;
+using CS576.Janitor.Character;
 
 
 /*
@@ -20,6 +21,9 @@ namespace CS576.Janitor.Process
         }
 
         [SerializeField]
+        private GameObject _clock;
+
+        [SerializeField]
         private GoalManager _goalManager;
 
         [SerializeField]
@@ -27,6 +31,9 @@ namespace CS576.Janitor.Process
 
         [SerializeField]
         private GameObject _scoreLabel;
+
+        [SerializeField]
+        private GameObject _invasionModePanel;
 
         [SerializeField]
         private GameConfiguration _config;
@@ -49,6 +56,9 @@ namespace CS576.Janitor.Process
 
         [SerializeField]
         private GameLevel[] _allInvasionLevels;
+
+        [SerializeField]
+        private Spaceship _spaceship;
 
         private void Start()
         {
@@ -98,21 +108,30 @@ namespace CS576.Janitor.Process
             _gameMode = mode;
             if (mode == GameMode.Classic)
             {
+                _clock.SetActive(true);
                 _goalBar.SetActive(true);
                 _scoreLabel.SetActive(false);
+                _invasionModePanel.SetActive(false);
                 _goalManager.SetGoalTextForClassic();
+                _spaceship.transform.parent.gameObject.SetActive(false);
             }
             else if (mode == GameMode.Score)
             {
+                _clock.SetActive(true);
                 _goalBar.SetActive(false);
                 _scoreLabel.SetActive(true);
+                _invasionModePanel.SetActive(false);
                 _goalManager.SetGoalTextForScore();
+                _spaceship.transform.parent.gameObject.SetActive(false);
             }
             else if (mode == GameMode.Invasion)
-            {
-
-
+            {   
+                _clock.SetActive(false);
+                _goalBar.SetActive(false);
+                _scoreLabel.SetActive(false);
+                _invasionModePanel.SetActive(true);
                 _goalManager.SetGoalTextForInvasion();
+                _spaceship.transform.parent.gameObject.SetActive(true);
             }
         }
 

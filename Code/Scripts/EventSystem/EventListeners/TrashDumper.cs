@@ -2,7 +2,6 @@ using UnityEngine;
 using CS576.Janitor.Prop;
 using CS576.Janitor.Process;
 
-
 /*
     Controls the basic things that should happen after a trash is dumped.
     This applies to all game modes.
@@ -30,9 +29,6 @@ namespace CS576.Janitor.Trashes
         private IntEvent _onGoalUpdates;
 
         [SerializeField]
-        private UI.CapacityUIManager _capUIManager;
-
-        [SerializeField]
         private StringEvent _chatEvent;
 
         private GameMode _gameMode;
@@ -58,8 +54,6 @@ namespace CS576.Janitor.Trashes
             _onGoalUpdates.TriggerEvent(trash.GetTrashType == canType ? 
                                         GetModifiedTrashValue(_gameMode, trash) : 
                                         -GetModifiedTrashValue(_gameMode, trash));
-
-            _capUIManager.UpdateUI(_trashBag.GetCurrentWeight, _trashBag.GetTotalCapacity);
         }
 
         private int GetModifiedTrashValue(GameMode mode, Trash trash)
