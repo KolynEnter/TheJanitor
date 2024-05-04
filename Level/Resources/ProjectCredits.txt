@@ -1,0 +1,16 @@
+Used packages from Unity Asset Store:
+Adjust Pivot 1.0.6 by yasirkula
+Catmull-Clark Mesh Subdivision 2.0 by Torec Studio
+CITY package 1.0 by 255 pixel studios
+POLYGON - Sampler Pack 1.0 by Synty Studios
+
+UI: https://penzilla.itch.io/basic-gui-bundle
+Font 1: https://www.dafont.com/sunny-spells.font
+
+Cartoon Hand from: https://clipground.com/pics/get
+Ghost Popper from: https://thepoptopshop.com/osc/product_info.php?products_id=342
+Jammer from: https://www.jammerinthebox.com/product_images/m/151/JFCNewest_All_in_one_Jammer_Portable_Selectable_8_band_All_2G_3G_4G_Phone_Signal_Jammer_%26_WiFi_GPS_L1_Lojack_High-capacity(_European_version)_JTB-022-0050-2__65555_zoom.jpg
+Fishing rod from: https://www.vexels.com/png-svg/preview/137785/rod-fishing-rod-fishing-fish
+Fishing net from: Dall e 2
+Cooking clipper from: https://www.bigspoon.my/kitchenware/tongs/bigspoon-food-tong-stainless-steel-clipper-kitchen-cooking-tweezer
+

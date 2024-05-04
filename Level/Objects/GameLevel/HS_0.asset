@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7afb5a4e4a8b594190603e074739377, type: 3}
+  m_Name: HS_0
+  m_EditorClassIdentifier: 
+  _mode: 1
+  _difficulty: 1
+  _limitMinutes: 5
+  _goal: 0
+  _spaceshipHP: 0
+  _spaceshipSpeed: 0
+  _cityHP: 0
+  _jammerProduceDemand: 0
+  _minTrashNumber: 10
+  _maxTrashNumber: 100
+  _trashGenerateInterval: 15
+  _trashGenerateNumber: 10
+  _modifiedTrashGenerateRate: []
+  _modifiedTrashScore: []
+  _modifiedTrashBarFillValue: []
+  _trashCanChance:
+  - trashType: 0
+    chance: 25
+  - trashType: 1
+    chance: 25
+  - trashType: 2
+    chance: 25
+  - trashType: 3
+    chance: 25

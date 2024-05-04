@@ -1,0 +1,6 @@
+Normal##Good janitor##1000
+Normal##Earth guardian##500
+Normal##Trash talk##900
+Normal##Blue J​##325
+Normal##Jester​##40
+Normal##Bug​##0
